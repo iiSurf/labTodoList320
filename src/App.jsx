@@ -14,13 +14,17 @@ function App() {
   const [todos, dispatch] = useReducer(reducer, []);
   const [name, setName] = useState('');
 
+  function handleSubmit() {
+
+  };
+
   return (
     <>
-      <form>
-        <input type='text' value={name} onChange={e => setName(e.target.value)} />
-      </form>
+      <form onSubmit={handleSubmit}>
+        <input type='text' value={name} onChange={e => setName(e.target.value)} />;
+      </form>;
     </>
   )
-}
+};
 
-export default App
+export default App;
