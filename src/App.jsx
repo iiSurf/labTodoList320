@@ -3,7 +3,7 @@ import './App.css';
 // npm install react-router-dom
 
 const ACTIONS = {
-
+  ADD_TODO : 'add-todo',
 };
 
 function reducer(state, action) {
@@ -14,15 +14,17 @@ function App() {
   const [todos, dispatch] = useReducer(reducer, []);
   const [name, setName] = useState('');
 
-  function handleSubmit() {
-
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch({type: ACTIONS.ADD_TODO});
+    setName('');
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type='text' value={name} onChange={e => setName(e.target.value)} />;
-      </form>;
+        <input type='text' value={name} onChange={e => setName(e.target.value)} />
+      </form>
     </>
   )
 };
