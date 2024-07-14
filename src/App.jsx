@@ -1,12 +1,22 @@
-import { useState } from 'react'
-import './App.css'
+import { react, useReducer } from 'react';
+import './App.css';
+// npm install react-router-dom
+
+const ACTIONS = {
+
+};
+
+function reducer(state, action) {
+
+};
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [todos, dispatch] = useReducer(reducer, [])
   return (
     <>
-    
+      <form>
+
+      </form>
     </>
   )
 }
