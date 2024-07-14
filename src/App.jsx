@@ -1,4 +1,5 @@
 import { react, useReducer, useState } from 'react';
+import Todo from './Todo';
 import './App.css';
 // npm install react-router-dom
 
@@ -39,7 +40,7 @@ function App() {
         <input type='text' value={name} onChange={e => setName(e.target.value)} />
       </form>
       {todos.map(todo => {
-        <Todo key={todos.id} todo={todo} />
+        return <Todo key={todos.id} todo={todo} />
       })}
     </>
   )
