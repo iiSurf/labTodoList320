@@ -43,7 +43,7 @@ function reducer(todos, action) {
 }
 
 function newTodo(name) {
-  return { id: Date.now(), name: name, complete: false };
+  return { id: Date.now(), name: name, complete: false, editing:  false };
 }
 
 function App() {
@@ -57,18 +57,20 @@ function App() {
   }
 
   return (
-    <>
+    <div className="container">
+      <h1>Todo List</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <button type='submit'>Add</button>
       </form>
       {todos.map((todo) => {
         return <Todo key={todos.id} todo={todo} dispatch={dispatch} />;
       })}
-    </>
+    </div>
   );
 }
 
