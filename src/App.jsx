@@ -1,12 +1,13 @@
-import { react, useReducer, useState } from "react";
+import { React, useReducer, useState } from "react";
 import Todo from "./Todo";
 import "./App.css";
-// npm install react-router-dom
 
 export const ACTIONS = {
   ADD_TODO: "add-todo",
   TOGGLE_TODO: "toggle-todo",
   DELETE_TODO: "delete-todo",
+  EDIT_TODO: "edit-todo",
+  SAVE_TODO: "save-todo",
 };
 
 function reducer(todos, action) {
@@ -21,7 +22,21 @@ function reducer(todos, action) {
         return todo;
       });
     case ACTIONS.DELETE_TODO:
-      return todos.filter(todo => todo.id != action.payload.id)
+      return todos.filter(todo => todo.id != action.payload.id);
+    case ACTIONS.EDIT_TODO:
+      return todos.map(todo => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, editing: true };
+        }
+        return todo;
+      });
+    case ACTIONS.SAVE_TODO:
+      return todos.map(todo => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, name: action.payload.name, editing: false };
+        }
+        return todo;
+      });
     default:
       return todos;
   }
