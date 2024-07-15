@@ -24,7 +24,13 @@ function Todo({ todo, dispatch }) {
 
   const renderDefaultView = () => (
     <div>
-
+      <input
+        type="checkbox"
+        checked={todo.complete}
+        onChange={() =>
+          dispatch({ type: ACTIONS.TOGGLE_TODO, payload: { id: todo.id } })
+        }
+      />
       <span style={{ color: todo.complete ? "#AAA" : "#000" }}>
         {todo.name}
       </span>
@@ -42,7 +48,7 @@ function Todo({ todo, dispatch }) {
           dispatch({ type: ACTIONS.EDIT_TODO, payload: { id: todo.id } })
         }
       >
-       Edit
+        Edit
       </button>
 
       <button
@@ -56,8 +62,8 @@ function Todo({ todo, dispatch }) {
   );
 
   return (
-    <div className='todo'>
-        { todo.editing ? renderEditView() : renderDefaultView() }
+    <div className="todo">
+      {todo.editing ? renderEditView() : renderDefaultView()}
     </div>
   );
 }
