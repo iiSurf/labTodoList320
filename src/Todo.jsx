@@ -55,6 +55,7 @@ function Todo({ todo, dispatch }) {
         onClick={() =>
           dispatch({ type: ACTIONS.DELETE_TODO, payload: { id: todo.id } })
         }
+        disabled={!todo.complete}
       >
         Delete
       </button>
